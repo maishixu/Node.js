@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        caption {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        thead {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        td,
+        th {
+            text-align: center;
+            border: 1px black solid;
+            font-size: 18px;
+            padding: 5px 8px;
+        }
+        a{
+            text-decoration: none;
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <% if(STUDENT_ARR.length> 0){ %>
+        <table>
+            <caption>South Side Family</caption>
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Name</td>
+                    <td>Age</td>
+                    <td>Gender</td>
+                    <td>Address</td>
+                    <td>Operate</td>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(const person of STUDENT_ARR){ %>
+                    <tr>
+                        <td>
+                            <%=person.id%>
+                        </td>
+                        <td>
+                            <%=person.name%>
+                        </td>
+                        <td>
+                            <%=person.age%>
+                        </td>
+                        <td>
+                            <%=person.gender%>
+                        </td>
+                        <td>
+                            <%=person.address%>
+                        </td>
+                        <td>
+                            <a onclick="return confirm('确认要删除吗')" href="/delete?id=<%= person.id %>">Delete
+                                <!--也要把id传到服务器-->
+                            </a>
+                            <a href="/Update?id=<%= person.id %>">Update</a>
+                        </td>
+                    </tr>
+                    <%}%>
+            </tbody>
+        </table>
+        <% } else{%>
+            <p>该列表为空！</p>
+            <% } %>
+                <hr>
+                <form action="add_family" method="post">
+                    <div><input type="text" name="name" placeholder="name"></div>
+                    <div><input type="number" name="age" placeholder="age"></div>
+                    <div>Gender:<input type="radio" name="gender" value="male">boy<input type="radio" name="gender"
+                            value="female">girl</div>
+                    <div><input type="text" name="address" placeholder="address"></div>
+                    <div><button>submit</button></div>
+                </form>
+                
+                    <div><button><a href="/logout">退出</a></button></div>
+            
+</body>
+
+</html>

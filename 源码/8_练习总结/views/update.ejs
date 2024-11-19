@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <h2>修改信息</h2>
+    <form action="update-submit" method="post">
+        <div><input type="hidden" name="id" value="<%=person.id %>"></div>
+        <div><input type="text" name="name" value="<%= person.name %>"></div>
+        <div><input type="number" name="age" value="<%= person.age %>"></div>
+        <div>Gender:<input type="radio" name="gender" value="male" <%= person.gender ==="male"&&"checked"%>>boy
+                    <input type="radio" name="gender" value="female" <%= person.gender ==="female"&&"checked"%>>girl</div>
+        <div><input type="text" name="address" value="<%= person.address %>"></div>
+        <div><button>Update</button></div>
+    </form>
+</body>
+</html>
